@@ -6,10 +6,21 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Image actorImage;
+    [Header("Dialogue Box")]
+    public GameObject dialogueBox;
+    public float typingSpeed = 0.005f;
     public TextMeshProUGUI actorName;
     public TextMeshProUGUI messageText;
     public RectTransform backgroundBox;
+    public GameObject continueButton;
+
+    [Header("Left Actor")]
+    public Image actorImageLeft;
+    public GameObject actorImageLeftObject;
+
+    [Header("Right Actor")]
+    public Image actorImageRight;
+    public GameObject actorImageRightObject;
 
     private Message[] currentMessages;
     private Actor[] currentActors;
@@ -18,14 +29,16 @@ public class DialogueManager : MonoBehaviour
 
     public static bool isActive;
 
-    public float typingSpeed = 0.04f;
     private Coroutine displayLineCoroutine;
     private bool canContinueToNextLine = false;
-    public GameObject continueButton;
+
+    bool isAddingRichTextTag = false;
 
     private void Start()
     {
         backgroundBox.transform.localScale = Vector3.zero;
+        actorImageLeftObject.SetActive(false);
+        actorImageRightObject.SetActive(false);
     }
 
     public void Update()
@@ -39,6 +52,8 @@ public class DialogueManager : MonoBehaviour
 
     public void OpenDialogue(Message[] messages, Actor[] actors)
     {
+        backgroundBox.transform.localScale = Vector3.one;
+
         currentMessages = messages;
         currentActors = actors;
         activeMessage = 0;
@@ -46,8 +61,6 @@ public class DialogueManager : MonoBehaviour
 
         Debug.Log("Started conversation. Loaded messages: " + messages.Length);
         DisplayMessage();
-
-        // animate dialogue box using LeanTween
     }
 
     void DisplayMessage()
@@ -64,7 +77,22 @@ public class DialogueManager : MonoBehaviour
 
         Actor actorToDisplay = currentActors[messageToDisplay.actorId];
         actorName.text = actorToDisplay.name;
-        actorImage.sprite = actorToDisplay.sprite;
+
+        if (messageToDisplay.actorId == 1)
+        {
+            actorImageLeftObject.SetActive(true);
+            actorImageRightObject.SetActive(false);
+            //Mood = messageToDisplay.mood;
+            //actorImageLeft.sprite = actorToDisplay.expression[messageToDisplay.currentExpression];
+        }
+        else if (messageToDisplay.actorId == 0)
+        {
+            actorImageLeftObject.SetActive(false);
+            actorImageRightObject.SetActive(true);
+            //Mood = messageToDisplay.mood;
+            //actorImageRight.sprite = actorToDisplay.sprite;
+            //actorImageRight.sprite = actorToDisplay.expression[messageToDisplay.currentExpression];
+        }
     }
 
     public void NextMessage()
@@ -77,7 +105,8 @@ public class DialogueManager : MonoBehaviour
         else
         {
             isActive = false;
-            // scale down the dialogue box using LeanTween
+            //dialogueBox.SetActive(false);
+            backgroundBox.transform.localScale = Vector3.zero;
             Debug.Log("Conversation ended.");
         }
     }
@@ -93,8 +122,28 @@ public class DialogueManager : MonoBehaviour
 
         foreach (char c in line.ToCharArray())
         {
-            messageText.text += c;
-            yield return new WaitForSeconds(typingSpeed);
+            // if the advance button is pressed, finish the sentence immediately
+            if (Input.GetKey(KeyCode.Space))
+            {
+                messageText.text = line;
+                break;
+            }
+
+            if (c == '<' || isAddingRichTextTag)
+            {
+                isAddingRichTextTag = true;
+                messageText.text += c;
+
+                if (c == '>')
+                {
+                    isAddingRichTextTag = false;
+                }
+            }
+            else
+            {
+                messageText.text += c;
+                yield return new WaitForSeconds(typingSpeed);
+            }
         }
 
         continueButton.SetActive(true);
