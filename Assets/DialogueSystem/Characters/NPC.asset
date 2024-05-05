@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: NPC
   characterPortrait: {fileID: 21300000, guid: aa5970e7cc4ebcb499128ea86a5edc15, type: 3}
-  portraitAngry: {fileID: 0}
-  portraitHappy: {fileID: 0}
-  portraitSad: {fileID: 0}
+  portraitAngry: {fileID: 21300000, guid: 0eb81a4bba14f2e4f9ce4ce6e597b29b, type: 3}
+  portraitHappy: {fileID: 21300000, guid: afa8b717b5c043046b15d4f26cf76907, type: 3}
+  portraitSad: {fileID: 21300000, guid: 3aa61638d3e5d0d40868a4e1676ffa81, type: 3}

@@ -8,20 +8,17 @@ public class DialogueTrigger : MonoBehaviour
 
     public Message[] messages;
     public Actor[] actors;
+    public Conversations conversation;
+    public DialogueDisplay dialogueDisplay;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            //TriggerDialogue();
             StartDialogue();
+            //dialogueDisplay.AdvanceLine();
         }
     }
-
-    /*public void TriggerDialogue()
-    {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-    }*/
 
     public void StartDialogue()
     {

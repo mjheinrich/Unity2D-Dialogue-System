@@ -17,26 +17,28 @@ public class DialogueDisplay : MonoBehaviour
     private int activeLineIndex;
     private bool conversationStarted = false;
     //private bool canContinueToNextLine = false;
+    public static bool isActive = false;
     private bool isAddingRichTextTag = false;
 
-    public void ChangeConversation(Conversations nextConversation)
+    /*public void ChangeConversation(Conversations nextConversation)
     {
         conversationStarted = false;
         conversations = nextConversation;
-        AdvanceLine();
-    }
+        //AdvanceLine();
+    }*/
 
     private void Start()
     {
+        isActive = false;
         speakerUILeft = speakerLeft.GetComponent<SpeakerUI>();
         speakerUIRight = speakerRight.GetComponent<SpeakerUI>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.E))
             AdvanceLine();
-        else if (Input.GetKeyDown("x"))
+        else if (Input.GetKeyDown(KeyCode.X))
             EndConversation();
     }
 
@@ -46,10 +48,12 @@ public class DialogueDisplay : MonoBehaviour
         conversationStarted = false;
         speakerUILeft.Hide();
         speakerUIRight.Hide();
+        isActive = false;
     }
 
     public void Initialize()
     {
+        isActive = true;
         conversationStarted = true;
         activeLineIndex = 0;
         speakerUILeft.Speaker = conversations.speakerLeft;
@@ -64,7 +68,8 @@ public class DialogueDisplay : MonoBehaviour
         if (activeLineIndex < conversations.lines.Length)
             DisplayLine();
         else
-            AdvanceConversation();
+            EndConversation();
+            //AdvanceConversation();
     }
 
     public void DisplayLine()
@@ -84,7 +89,7 @@ public class DialogueDisplay : MonoBehaviour
         activeLineIndex += 1;
     }
 
-    private void AdvanceConversation()
+    /*private void AdvanceConversation()
     {
         // These are really three types of dialog tree node
         // and should be three different objects with a standard interface
@@ -93,7 +98,7 @@ public class DialogueDisplay : MonoBehaviour
             ChangeConversation(conversations.nextConversation);
         else
             EndConversation();
-    }
+    }*/
 
     private void SetDialog(
         SpeakerUI activeSpeakerUI,

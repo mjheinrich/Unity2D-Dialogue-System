@@ -23,6 +23,6 @@ public class Conversations : ScriptableObject
 {
     public Character speakerLeft;
     public Character speakerRight;
-    public Conversations nextConversation;
+    //public Conversations nextConversation;
     public Line[] lines;
 }

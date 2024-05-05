@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (!dc.dialoguePanel.activeInHierarchy)
+        if (!DialogueDisplay.isActive)
         {
             canMove = true;
         }
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             canMove = false;
-        }*/
+        }
 
         ProcessInputs();
     }

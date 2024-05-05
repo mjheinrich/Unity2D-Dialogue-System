@@ -4,24 +4,40 @@ using UnityEngine;
 
 public class ConversationHolder : MonoBehaviour
 {
-    public Message[] messages;
-    public Actor[] actors;
+    //public Message[] messages;
+    //public Actor[] actors;
 
-    public GameObject dialogueBox;
+    //public GameObject dialogueBox;
 
     public GameObject dialogueTrigger;
-    public DialogueManager dialogueManager;
+    public GameObject dialogueIndicator;
+    //public DialogueManager dialogueManager;
 
-    //public DialogueDisplay dialogueDisplay;
-    //public Conversations conversation;
+    public DialogueDisplay dialogueDisplay;
+    public Conversations conversation;
+
+    public bool disableTriggerWhenEnded = false;
+
+    private bool conversationSet = false;
+    //private bool convoHasChanged = false;
+
+    private void Awake()
+    {
+        dialogueIndicator.SetActive(false);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && DialogueManager.isActive == false)
+        if (collision.CompareTag("Player"))
         {
-            //dialogueBox.SetActive(true);
-            //dialogueDisplay.conversations = conversation;
-            StartDialogue();
+            if (conversationSet == false)
+            {
+                conversationSet = true;
+                dialogueDisplay.conversations = conversation;
+            }
+
+            dialogueIndicator.SetActive(true);
+            //convoHasChanged = false;
         }
     }
 
@@ -29,15 +45,25 @@ public class ConversationHolder : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //dialogueDisplay.ChangeConversation(conversation.nextConversation);
-            //dialogueTrigger.SetActive(false);
+            /*if (convoHasChanged == false)
+            {
+                convoHasChanged = true;
+                dialogueDisplay.ChangeConversation(conversation.nextConversation);
+            }*/
+
+            if (disableTriggerWhenEnded && DialogueDisplay.isActive == true)
+            {
+                dialogueTrigger.SetActive(false);
+            }
+
             //dialogueBox.SetActive(false);
+            dialogueIndicator.SetActive(false);
         }
     }
 
-    public void StartDialogue()
+    /*public void StartDialogue()
     {
         // replace with singleton pattern
         FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
-    }
+    }*/
 }
