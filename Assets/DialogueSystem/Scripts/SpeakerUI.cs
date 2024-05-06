@@ -9,6 +9,7 @@ public class SpeakerUI : MonoBehaviour
     public TextMeshProUGUI dialogue;
 
     private Character speaker;
+
     public Character Speaker
     {
         get { return speaker; }
@@ -35,15 +36,15 @@ public class SpeakerUI : MonoBehaviour
             {
                 sprite = speaker.portraitAngry;
             }
-            if (value == Mood.Happy)
+            else if (value == Mood.Happy)
             {
                 sprite = speaker.portraitHappy;
             }
-            if (value == Mood.Sad)
+            else if (value == Mood.Sad)
             {
                 sprite = speaker.portraitSad;
             }
-            else
+            else 
             {
                 sprite = speaker.characterPortrait;
             }

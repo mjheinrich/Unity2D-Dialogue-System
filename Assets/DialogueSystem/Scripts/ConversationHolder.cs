@@ -16,9 +16,11 @@ public class ConversationHolder : MonoBehaviour
     public DialogueDisplay dialogueDisplay;
     public Conversations conversation;
 
-    public bool disableTriggerWhenEnded = false;
+    private bool disableTriggerWhenEnded = false;
+    //public bool canBeDisabled = false;
 
     private bool conversationSet = false;
+    //private bool conversationReset = false;
     //private bool convoHasChanged = false;
 
     private void Awake()
@@ -36,8 +38,25 @@ public class ConversationHolder : MonoBehaviour
                 dialogueDisplay.conversations = conversation;
             }
 
+            /*if (conversationReset)
+            {
+                dialogueDisplay.conversations = conversation;
+            }*/
+
             dialogueIndicator.SetActive(true);
             //convoHasChanged = false;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (disableTriggerWhenEnded && DialogueDisplay.isActive == true)
+            {
+                dialogueTrigger.SetActive(false);
+                dialogueIndicator.SetActive(false);
+            }
         }
     }
 
@@ -51,13 +70,16 @@ public class ConversationHolder : MonoBehaviour
                 dialogueDisplay.ChangeConversation(conversation.nextConversation);
             }*/
 
-            if (disableTriggerWhenEnded && DialogueDisplay.isActive == true)
+            /*if (disableTriggerWhenEnded && DialogueDisplay.isActive == true)
             {
                 dialogueTrigger.SetActive(false);
-            }
+            }*/
+            /*if (!disableTriggerWhenEnded)
+            {
+                conversationReset = true;
+            }*/
 
             //dialogueBox.SetActive(false);
-            dialogueIndicator.SetActive(false);
         }
     }
 

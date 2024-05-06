@@ -15,7 +15,7 @@ public class DialogueDisplay : MonoBehaviour
     public float typingSpeed;
 
     private int activeLineIndex;
-    private bool conversationStarted = false;
+    public static bool conversationStarted = false;
     //private bool canContinueToNextLine = false;
     public static bool isActive = false;
     private bool isAddingRichTextTag = false;
@@ -45,6 +45,7 @@ public class DialogueDisplay : MonoBehaviour
     private void EndConversation()
     {
         //conversations = defaultConversation;
+        conversations = null;
         conversationStarted = false;
         speakerUILeft.Hide();
         speakerUIRight.Hide();
@@ -62,7 +63,7 @@ public class DialogueDisplay : MonoBehaviour
 
     public void AdvanceLine()
     {
-        //if (conversations == null) return;
+        if (conversations == null) return;
         if (!conversationStarted) Initialize();
 
         if (activeLineIndex < conversations.lines.Length)
@@ -110,6 +111,7 @@ public class DialogueDisplay : MonoBehaviour
         inactiveSpeakerUI.Hide();
 
         activeSpeakerUI.Dialogue = "";
+        activeSpeakerUI.Mood = line.mood;
 
         StopAllCoroutines();
         StartCoroutine(EffectTypewriter(line.text, activeSpeakerUI));

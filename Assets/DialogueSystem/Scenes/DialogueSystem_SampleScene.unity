@@ -584,7 +584,6 @@ MonoBehaviour:
   dialogueIndicator: {fileID: 1042789304}
   dialogueDisplay: {fileID: 1336980556}
   conversation: {fileID: 11400000, guid: e8fb01d17fa849344b95eabcc56738d2, type: 2}
-  disableTriggerWhenEnded: 1
 --- !u!1 &246841866
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,8 +800,7 @@ MonoBehaviour:
   dialogueTrigger: {fileID: 353625818}
   dialogueIndicator: {fileID: 1084328317}
   dialogueDisplay: {fileID: 1336980556}
-  conversation: {fileID: 11400000, guid: fd5382934675c0644883b9412a0dae3a, type: 2}
-  disableTriggerWhenEnded: 1
+  conversation: {fileID: 11400000, guid: b1eedc83482a94948b95ddd109537ea1, type: 2}
 --- !u!61 &353625821
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1094,7 +1092,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.22801706, g: 0.250545, b: 0.26415092, a: 0}
+  m_BackGroundColor: {r: 0.2667403, g: 0.2506675, b: 0.4056604, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1271,7 +1269,7 @@ Transform:
   - {fileID: 244116966}
   - {fileID: 722076701}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &722076700
 GameObject:
@@ -2377,8 +2375,7 @@ MonoBehaviour:
   dialogueTrigger: {fileID: 1297022593}
   dialogueIndicator: {fileID: 1681657309}
   dialogueDisplay: {fileID: 1336980556}
-  conversation: {fileID: 11400000, guid: fd5382934675c0644883b9412a0dae3a, type: 2}
-  disableTriggerWhenEnded: 1
+  conversation: {fileID: 11400000, guid: 1d50022c957258f4eb46eaa805b3771b, type: 2}
 --- !u!61 &1297022596
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3246,6 +3243,7 @@ GameObject:
   - component: {fileID: 1680002872}
   - component: {fileID: 1680002874}
   - component: {fileID: 1680002873}
+  - component: {fileID: 1680002875}
   m_Layer: 5
   m_Name: CharPortraitLeft_img
   m_TagString: Untagged
@@ -3270,8 +3268,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -675, y: 297}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -750, y: 297}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1680002873
 MonoBehaviour:
@@ -3311,6 +3309,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680002871}
   m_CullTransparentMesh: 1
+--- !u!223 &1680002875
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680002871}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1681657309
 GameObject:
   m_ObjectHideFlags: 0
@@ -3470,7 +3489,6 @@ MonoBehaviour:
   dialogueIndicator: {fileID: 1141825612}
   dialogueDisplay: {fileID: 1336980556}
   conversation: {fileID: 11400000, guid: fd5382934675c0644883b9412a0dae3a, type: 2}
-  disableTriggerWhenEnded: 0
 --- !u!1 &1802272666
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,6 +3766,7 @@ GameObject:
   - component: {fileID: 1969702637}
   - component: {fileID: 1969702636}
   - component: {fileID: 1969702635}
+  - component: {fileID: 1969702638}
   m_Layer: 5
   m_Name: CharPortraitRight_img
   m_TagString: Untagged
@@ -3775,7 +3794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 63172026d326d50419987b3e918aed56, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3810,9 +3829,30 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 660, y: 297}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 751, y: 297}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &1969702638
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969702634}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1989655233
 GameObject:
   m_ObjectHideFlags: 0
@@ -4199,5 +4239,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
