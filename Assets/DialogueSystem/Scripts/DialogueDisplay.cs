@@ -5,27 +5,19 @@ using TMPro;
 
 public class DialogueDisplay : MonoBehaviour
 {
-    public Conversations conversations;
-    public GameObject speakerLeft;
-    public GameObject speakerRight;
+    [SerializeField] private float typingSpeed;
+    [SerializeField] private GameObject speakerLeft;
+    [SerializeField] private GameObject speakerRight;
 
+    public static Conversations conversations;
     private SpeakerUI speakerUILeft;
     private SpeakerUI speakerUIRight;
 
-    public float typingSpeed;
-
     private int activeLineIndex;
+
     public static bool conversationStarted = false;
-    //private bool canContinueToNextLine = false;
     public static bool isActive = false;
     private bool isAddingRichTextTag = false;
-
-    /*public void ChangeConversation(Conversations nextConversation)
-    {
-        conversationStarted = false;
-        conversations = nextConversation;
-        //AdvanceLine();
-    }*/
 
     private void Start()
     {
@@ -38,13 +30,10 @@ public class DialogueDisplay : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
             AdvanceLine();
-        else if (Input.GetKeyDown(KeyCode.X))
-            EndConversation();
     }
 
     private void EndConversation()
     {
-        //conversations = defaultConversation;
         conversations = null;
         conversationStarted = false;
         speakerUILeft.Hide();
@@ -70,7 +59,6 @@ public class DialogueDisplay : MonoBehaviour
             DisplayLine();
         else
             EndConversation();
-            //AdvanceConversation();
     }
 
     public void DisplayLine()
@@ -89,17 +77,6 @@ public class DialogueDisplay : MonoBehaviour
 
         activeLineIndex += 1;
     }
-
-    /*private void AdvanceConversation()
-    {
-        // These are really three types of dialog tree node
-        // and should be three different objects with a standard interface
-
-        if (conversations.nextConversation != null)
-            ChangeConversation(conversations.nextConversation);
-        else
-            EndConversation();
-    }*/
 
     private void SetDialog(
         SpeakerUI activeSpeakerUI,

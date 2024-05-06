@@ -6,18 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private LayerMask solidObjects;
 
     private Vector2 moveDirection;
-
-    public bool canMove;
-
-    //private NpcController dc;
+    public static bool canMove;
 
     private void Start()
     {
         canMove = true;
-        //dc = FindObjectOfType<NpcController>();
     }
 
     // Update is called once per frame

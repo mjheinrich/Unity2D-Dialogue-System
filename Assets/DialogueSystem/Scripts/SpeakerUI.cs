@@ -4,9 +4,9 @@ using TMPro;
 
 public class SpeakerUI : MonoBehaviour
 {
-    public Image portrait;
-    public TextMeshProUGUI fullName;
-    public TextMeshProUGUI dialogue;
+    [SerializeField] private Image portrait;
+    [SerializeField] private TextMeshProUGUI fullName;
+    [SerializeField] private TextMeshProUGUI dialogue;
 
     private Character speaker;
 

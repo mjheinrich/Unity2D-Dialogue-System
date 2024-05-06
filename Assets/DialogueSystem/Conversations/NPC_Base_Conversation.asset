@@ -10,23 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 526f1775e2b5ee342bdca8191829b90d, type: 3}
-  m_Name: NPC_NoDisable_Conversation
+  m_Name: NPC_Base_Conversation
   m_EditorClassIdentifier: 
   speakerLeft: {fileID: 11400000, guid: 68a7750dfb4cc1f4689efe8685e7be13, type: 2}
   speakerRight: {fileID: 11400000, guid: a4014fe8133188647a7021c07f5ddece, type: 2}
   lines:
   - character: {fileID: 11400000, guid: a4014fe8133188647a7021c07f5ddece, type: 2}
-    text: This is a test of the NPC Dialogue Trigger.
+    text: This is a test of the NPC Dialogue Trigger. Press E to advance the dialogue.
     mood: 0
   - character: {fileID: 11400000, guid: 68a7750dfb4cc1f4689efe8685e7be13, type: 2}
     text: Nice. Your text is appearing for me to see.
     mood: 0
   - character: {fileID: 11400000, guid: a4014fe8133188647a7021c07f5ddece, type: 2}
     text: Glad to hear that!
-    mood: 0
-  - character: {fileID: 11400000, guid: a4014fe8133188647a7021c07f5ddece, type: 2}
-    text: By the way, you can start this conversation over with me.
-    mood: 0
-  - character: {fileID: 11400000, guid: a4014fe8133188647a7021c07f5ddece, type: 2}
-    text: My dialogue trigger won't disable after you exit it.
     mood: 0

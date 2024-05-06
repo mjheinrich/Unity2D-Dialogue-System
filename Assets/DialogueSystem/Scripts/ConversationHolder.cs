@@ -4,24 +4,12 @@ using UnityEngine;
 
 public class ConversationHolder : MonoBehaviour
 {
-    //public Message[] messages;
-    //public Actor[] actors;
+    [SerializeField] private GameObject dialogueTrigger;
+    [SerializeField] private GameObject dialogueIndicator;
+    [SerializeField] private Conversations conversation;
 
-    //public GameObject dialogueBox;
-
-    public GameObject dialogueTrigger;
-    public GameObject dialogueIndicator;
-    //public DialogueManager dialogueManager;
-
-    public DialogueDisplay dialogueDisplay;
-    public Conversations conversation;
-
-    private bool disableTriggerWhenEnded = false;
-    //public bool canBeDisabled = false;
-
+    private readonly bool disableTriggerWhenEnded = true;
     private bool conversationSet = false;
-    //private bool conversationReset = false;
-    //private bool convoHasChanged = false;
 
     private void Awake()
     {
@@ -32,19 +20,13 @@ public class ConversationHolder : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (conversationSet == false)
+            if (!conversationSet)
             {
                 conversationSet = true;
-                dialogueDisplay.conversations = conversation;
+                DialogueDisplay.conversations = conversation;
             }
 
-            /*if (conversationReset)
-            {
-                dialogueDisplay.conversations = conversation;
-            }*/
-
             dialogueIndicator.SetActive(true);
-            //convoHasChanged = false;
         }
     }
 
@@ -52,7 +34,7 @@ public class ConversationHolder : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (disableTriggerWhenEnded && DialogueDisplay.isActive == true)
+            if (disableTriggerWhenEnded && DialogueDisplay.isActive)
             {
                 dialogueTrigger.SetActive(false);
                 dialogueIndicator.SetActive(false);
@@ -64,28 +46,7 @@ public class ConversationHolder : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            /*if (convoHasChanged == false)
-            {
-                convoHasChanged = true;
-                dialogueDisplay.ChangeConversation(conversation.nextConversation);
-            }*/
-
-            /*if (disableTriggerWhenEnded && DialogueDisplay.isActive == true)
-            {
-                dialogueTrigger.SetActive(false);
-            }*/
-            /*if (!disableTriggerWhenEnded)
-            {
-                conversationReset = true;
-            }*/
-
-            //dialogueBox.SetActive(false);
+            dialogueIndicator.SetActive(false);
         }
     }
-
-    /*public void StartDialogue()
-    {
-        // replace with singleton pattern
-        FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
-    }*/
 }
